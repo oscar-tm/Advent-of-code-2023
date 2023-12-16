@@ -8,8 +8,9 @@ with open('g:/Programmering/Python/Advent of code/Day 3/test.txt', 'r') as file:
 
     for j in range(len(schmematic)):
         i = 0
-        while i <len(schmematic[j]):
+        while i < len(schmematic[j]):
             c = 0
+            #Find all gears and adds them to a dictionary containing all the nearby numbers.
             if schmematic[j][i].isnumeric():
                 while(i + c < len(schmematic[j]) and schmematic[j][i + c].isnumeric()):
                     c += 1
@@ -51,6 +52,7 @@ with open('g:/Programmering/Python/Advent of code/Day 3/test.txt', 'r') as file:
                 i += 1
 
     for gears in dict.values():
+        #A gear only have 2 values closeby
         if len(gears) == 2:
             ans += gears[0] * gears[1]
 

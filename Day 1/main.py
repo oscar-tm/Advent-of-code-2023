@@ -7,6 +7,7 @@ with open('g:/Programmering/Python/Advent of code/Day 1/input.txt', 'r') as file
     for line in file:
         first = ""
         last = ""
+        #Find first and last digits, could be done faster by going backwards to find last digit.
         for i in range(len(line)):
             if(line[i] in digits):
                 if(first == ""):
