@@ -16,10 +16,12 @@ with open('g:/Programmering/Python/Advent of code 2023/Day 12/input.txt', 'r') a
 
 ans = 0
 combRecords = list(zip(records, groups))
+#We want to convert char to ints since a tuple of ints can be hashed
 mapping = {'.' : 0, "#" : 1, "?" : 2}
 
 @cache
 def dp(record, group, prevChar, rI, gI, cLen):
+    #The dp solution. Can probably be simplified but it does the trick.
     if rI == len(record) and len(group) - 1 <= gI <= len(group):
         if gI == len(group) - 1:
             if cLen == group[gI]:

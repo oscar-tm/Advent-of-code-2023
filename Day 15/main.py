@@ -1,4 +1,5 @@
 def hashFunc(seq):
+    #Calc the hash value
     hashValue = 0
     for char in seq:
         if char in "-=":
@@ -8,12 +9,16 @@ def hashFunc(seq):
     return hashValue
 
 with open("/Users/oscar/Programmering/Python/Advent-of-code-2023/Day 15/input.txt", 'r') as file:
+    #Save the input to a variavle
     line = file.readline().strip().split(',')
 
+#Create the data containers
 boxes = [[] for _ in range(256)]
 boxesSets = [set() for _ in range(256)]
 for seq in line:
     box = hashFunc(seq)
+
+    #Check if we should remove from data
     if seq[-1] == '-':
         seq = seq[:-1]
         if seq in boxesSets[box]:
@@ -23,7 +28,7 @@ for seq in line:
                     boxes[box].pop(i)
                     break
 
-    else:
+    else: #If not remove we add or change the value
         seq = seq.split('=')
         if seq[0] in boxesSets[box]:
             for i in range(len(boxes[box])):

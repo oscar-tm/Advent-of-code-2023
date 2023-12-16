@@ -1,4 +1,5 @@
 def findReflection(m):
+    #Calculates the possible reflection of a matrix m with 1 smudge
     refs = []
     for i in range(len(m[0])-1):
         c = 1
@@ -32,6 +33,7 @@ with open('g:/Programmering/Python/Advent of code 2023/Day 13/input.txt', 'r') a
         if line:
             m.append(line)
         else:
+            #Calculates the reflections for the current matrix
             for ref in findReflection(m):
                 ans += ref
             for ref in findReflection(transpose(m)):
