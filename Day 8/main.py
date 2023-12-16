@@ -9,6 +9,7 @@ with open('g:/Programmering/Python/Advent of code/Day 8/input.txt', 'r') as file
     nodeNetwork = dict()
     startNodes = []
 
+    #Load file and collect relevant data
     for line in file:
         node, connectedNodes = line.strip().split(" = ")
         node = node.strip()
@@ -23,6 +24,7 @@ with open('g:/Programmering/Python/Advent of code/Day 8/input.txt', 'r') as file
             startNodes.append(node)
 
 def lcm(integers):
+    #Least common multiple gives the correct answer
     a = integers[0]
     for b in integers[1:]:
         a = (a * b) // gcd(a, b)

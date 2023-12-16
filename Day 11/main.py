@@ -1,4 +1,5 @@
 with open('g:/Programmering/Python/Advent of code/Day 11/input.txt', 'r') as file:
+    #Load the data and check for empty cols/rows and and their indices to lists.
     gMap = []
     rowExpInd = []
     c = 0
@@ -23,6 +24,7 @@ with open('g:/Programmering/Python/Advent of code/Day 11/input.txt', 'r') as fil
         j += 1
 
 def getShift(x, expInd):
+    #Calcultaes the current shift by from a shift list
     c = 0
     for ind in expInd:
         if ind < x:
@@ -31,6 +33,7 @@ def getShift(x, expInd):
 
 gCount = 0
 gDict = {}
+#Calc the shift coords for all galaxies
 for i in range(len(gMap)):
     for j in range(len(gMap[i])):
         if gMap[i][j] == "#":
@@ -38,9 +41,11 @@ for i in range(len(gMap)):
             y = getShift(j, colExpInd)
             gDict[gCount] = (x, y)
             gCount += 1
+
 print(gDict)
 totDist = 0
 seen = set()
+#Calc the length between all galaxies
 for key1, coords1 in gDict.items():
     for key2, coords2 in gDict.items():
         if key1 != key2 and (key1, key2) not in seen:

@@ -14,6 +14,7 @@ with open('g:/Programmering/Python/Advent of code/Day 10/input.txt', 'r') as fil
             if diag[len(diag)-1][sPos] in ['|', 'L', 'J']:
                 q.append((len(diag)-2, sPos, 0, 2))
 
+        #Calc The directions to start in
         if 'S' in line:
             if diag[len(diag)-2][line.index('S') + 1] in ['|', '7', 'F']:
                 q.append((len(diag)-1, line.index('S') + 1, 0, 0))
@@ -30,6 +31,7 @@ sPos = q[0][0:2]
 order = []
 seen = set()
 while len(q) != 0:
+    #Find the cycle by moving in both directions when they hit eachother we found the farthest place
     currPos = q.pop(0)
     if currPos[0:2] in seen:
         break
@@ -38,6 +40,7 @@ while len(q) != 0:
         seen.add(currPos[0:2])
         order.append(currPos[0:2])
 
+    #Check how to move
     if currPos[3] == 0:
         if diag[currPos[0]-1][currPos[1]] == '|':
             q.append((currPos[0]-1, currPos[1], currPos[2]+1, 0))
@@ -96,7 +99,7 @@ seen.add(sPos)
 c = 0
 verts = [sPos]
 tmp  = []
-#Since the algo goes from both dir at the same time need to move everyother elemnt to get correct order
+#Since the algo goes from both dir at the same time need to move everyother element to get correct order
 for tup in order:
     if c % 2 == 0:
         verts.append(tup)
