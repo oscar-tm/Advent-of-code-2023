@@ -22,9 +22,9 @@ def shoeLaceFormula(coords):
     return 1/2 * area
 
 """
-Due to the fact that when count the area of a polygong we want to put our point in the middle of the index.
-This leads us to miss 1/2 of the circumfuruence when calculating the area of the polygon. Furthermore when
+Due to the fact that when count the area of a polygon we want to put our point in the middle of the index.
+This leads us to miss 1/2 of the circumference when calculating the area of the polygon. Furthermore when
 we calc the area we also miss 1 a.u. due to the fact when we go arount the polygon the total sum of angles
-will be 360 thus we need to add 1 to our answer.
+will be 360 thus we need to add 1 to our answer. (For each 90 deg we lost 1/4 a.u.)
 """
 print(shoeLaceFormula(coords) + circ/2 + 1)
